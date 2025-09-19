@@ -6,7 +6,14 @@
     <meta name="ad.size" content="width=970,height=250" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <script type="text/javascript">
-      var clickTag = "https://kenvuepro.com/en-gb/brands/calpol";
+      // ADNAMI CLICK TRACKING MACRO
+      let clickTagPrefix = "${CLICK_URL}"; // must stay like this for Adnami
+      const clickURL1 = "https://kenvuepro.com/en-gb/brands/calpol";
+      // const clickURL2 = "https://kenvuepro.com/en-gb/legal";
+
+      if (clickTagPrefix.indexOf("${") === 0) {
+        clickTagPrefix = ""; 
+      }
     </script>
   </head>
   <body onload="init();">
@@ -19,7 +26,7 @@
       <img src="images/logo.png" class="full-width" alt="" />
 
       <div class="logoTag">Paracetamol</div>
-       <div class="copy copy1">
+      <div class="copy copy1">
         Help parents tackle<br>post-immunisation fever
       </div>
       <div class="legal1">
@@ -38,22 +45,33 @@
       <div class="copy copy3 hidden">
         Works on fever for up to 8 hours
       </div>
-      <div class="legal3 hidden">
+      <div class="legal3 hidden" id="legal3">
         Click here for Calpol (Paracetamol) & Calprofen (Ibuprofen) product information.
       </div>
       
       <div id="cta" class="hidden">Learn more</div>
 
-
+      <!-- Banner-wide click area -->
       <div id="default_exit" class="btn"></div>
     </div>
+
     <script src="https://s0.2mdn.net/ads/studio/cached_libs/gsap_3.13_min.js"></script>
     <script type="text/javascript" src="main.js"></script>
+
     <script>
-      var clickArea = document.getElementById("default_exit");
-      clickArea.onclick = function () {
-        window.open(clickTag);
-      };
+      const clickElement1 = document.getElementById("default_exit");
+      // const clickElement2 = document.getElementById("legal3");
+
+      clickElement1.addEventListener("click", function(e){
+        const exitUrl = clickTagPrefix + clickURL1;
+        window.open(exitUrl, "_blank");
+      });
+
+      // clickElement2.addEventListener("click", function(e){
+      //   const exitUrl = clickTagPrefix + clickURL2;
+      //   window.open(exitUrl, "_blank");
+      //   e.stopPropagation(); // stops click bubbling to banner
+      // });
     </script>
   </body>
 </html>
