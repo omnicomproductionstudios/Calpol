@@ -9,7 +9,7 @@
       // ADNAMI CLICK TRACKING MACRO
       let clickTagPrefix = "${CLICK_URL}"; // must stay like this for Adnami
       const clickURL1 = "https://kenvuepro.com/en-gb/brands/calpol";
-      // const clickURL2 = "https://kenvuepro.com/en-gb/legal";
+      const clickURL2 = "https://assets.ctfassets.net/hziwb47cmkp3/6ztqCjr39GruFSoogdCKqK/5361046263cf683d12d521217cd6d79b/Calpol__Calcough_and_Calgel_All_Products_Product_Information.pdf";
 
       if (clickTagPrefix.indexOf("${") === 0) {
         clickTagPrefix = ""; 
@@ -46,7 +46,7 @@
         Works on fever for up to 8 hours
       </div>
       <div class="legal3 hidden" id="legal3">
-        Click here for Calpol (Paracetamol) & Calprofen (Ibuprofen) product information.
+        Click <span id="here">here</span> for Calpol (Paracetamol) & Calprofen (Ibuprofen) product information.
       </div>
       
       <div id="cta" class="hidden">Learn more</div>
@@ -60,18 +60,18 @@
 
     <script>
       const clickElement1 = document.getElementById("default_exit");
-      // const clickElement2 = document.getElementById("legal3");
+      const clickElement2 = document.getElementById("here");
 
       clickElement1.addEventListener("click", function(e){
         const exitUrl = clickTagPrefix + clickURL1;
         window.open(exitUrl, "_blank");
       });
 
-      // clickElement2.addEventListener("click", function(e){
-      //   const exitUrl = clickTagPrefix + clickURL2;
-      //   window.open(exitUrl, "_blank");
-      //   e.stopPropagation(); // stops click bubbling to banner
-      // });
+      clickElement2.addEventListener("click", function(e){
+        const exitUrl = clickTagPrefix + clickURL2;
+        window.open(exitUrl, "_blank");
+        e.stopPropagation(); // stops click bubbling to banner
+      });
     </script>
   </body>
 </html>
