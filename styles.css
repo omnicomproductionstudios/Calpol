@@ -125,6 +125,11 @@ html, body {
   right: 21px;
   text-align: right;
 }
+.legal1 u, .legal2 u, .legal3 u{
+  text-decoration: underline;
+  text-underline-offset: 1.5px;
+  /* text-decoration-thickness: 1.1px */
+}
 #cta{
   background-color: #df0480;
   color: #fff;
